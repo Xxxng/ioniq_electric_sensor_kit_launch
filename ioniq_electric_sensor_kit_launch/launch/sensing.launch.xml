@@ -1,0 +1,47 @@
+<launch>
+  <arg name="launch_driver" default="true" description="do launch driver"/>
+
+  <arg name="launch_camera"             default="false"/>
+  <arg name="launch_lidar"              default="true"/>
+  <arg name="launch_gnss"               default="false"/>
+  <arg name="launch_imu"                default="true"/>
+  <arg name="launch_radar"              default="false"/>
+
+  <arg name="vehicle_mirror_param_file" default="$(find-pkg-share ioniq_electric_vehicle_description)/config/mirror.param.yaml"/>
+  <arg name="pointcloud_container_name" default="pointcloud_container"/>
+  
+  <group>
+    <group if="$(var launch_camera)">
+      <include file="$(find-pkg-share ioniq_electric_sensor_kit_launch)/launch/camera.launch.xml">
+        <arg name="launch_driver" value="$(var launch_driver)" />
+      </include>
+    </group>
+
+    <group if="$(var launch_lidar)">
+      <include file="$(find-pkg-share ioniq_electric_sensor_kit_launch)/launch/lidar.launch.xml">
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+        <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
+        <arg name="pointcloud_container_name" value="$(var pointcloud_container_name)"/>
+      </include>
+    </group>
+
+    <group if="$(var launch_gnss)">
+      <include file="$(find-pkg-share ioniq_electric_sensor_kit_launch)/launch/gnss.launch.xml">
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+      </include>
+    </group>
+
+    <group if="$(var launch_imu)">
+      <include file="$(find-pkg-share ioniq_electric_sensor_kit_launch)/launch/imu.launch.xml">
+        <arg name="launch_driver" value="$(var launch_driver)"/>
+      </include>
+    </group>
+
+    <!-- Vehicle Velocity Converter  -->
+    <include file="$(find-pkg-share autoware_vehicle_velocity_converter)/launch/vehicle_velocity_converter.launch.xml">
+      <arg name="input_vehicle_velocity_topic" value="/vehicle/status/velocity_status"/>
+      <arg name="output_twist_with_covariance" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
+    </include>
+  </group>
+
+</launch>
