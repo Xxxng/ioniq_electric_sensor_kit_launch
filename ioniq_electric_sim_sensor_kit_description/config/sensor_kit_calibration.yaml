@@ -1,0 +1,51 @@
+sensor_kit_base_link:
+# camera
+  camera0/camera_link:
+    x: 0.9
+    y: 0.0
+    z: -0.6
+    roll: -1.57
+    pitch: 0.0
+    yaw: -1.57
+
+  camera1/camera_link:
+    x: 0.9
+    y: 0.0
+    z: -0.6
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+
+# lidar
+  # The laser coordinate system is the y-axis toward the front of the car.
+  velodyne_top_base_link:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+  
+  velodyne_front_base_link:
+    x: 2.4
+    y: 0.0
+    z: -1.0
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+
+  gnss_link:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+
+  witmotion/imu_link:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
