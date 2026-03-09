@@ -4,7 +4,7 @@
   <group if="$(var launch_driver)">
     <push-ros-namespace namespace="imu"/>
     <include file="$(find-pkg-share witmotion_ros)/launch/wt61c.launch.py">
-      <arg name="config" value="$(find-pkg-share ioniq_sensor_kit_launch)/config/wt61c.yml"/>
+      <arg name="config" value="$(find-pkg-share ioniq_electric_sensor_kit_launch)/config/wt61c.yml"/>
     </include>
 
     <include file="$(find-pkg-share autoware_imu_corrector)/launch/imu_corrector.launch.xml">

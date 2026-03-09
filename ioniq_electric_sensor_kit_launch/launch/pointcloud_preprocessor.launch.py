@@ -70,14 +70,14 @@ def generate_launch_description():
             DeclareLaunchArgument(name, default_value=default_value)
         )
 
-    ioniq_sensor_kit_launch_share_dir = get_package_share_directory("ioniq_sensor_kit_launch")
+    ioniq_electric_sensor_kit_launch_share_dir = get_package_share_directory("ioniq_electric_sensor_kit_launch")
     add_launch_arg("use_multithread", "False")
     add_launch_arg("use_intra_process", "False")
     add_launch_arg("pointcloud_container_name", "pointcloud_container")
     add_launch_arg(
         "concatenate_and_time_sync_node_param_path",
         os.path.join(
-            ioniq_sensor_kit_launch_share_dir,
+            ioniq_electric_sensor_kit_launch_share_dir,
             "config",
             "concatenate_and_time_sync_node.param.yaml",
         ),

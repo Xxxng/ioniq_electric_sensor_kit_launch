@@ -4,7 +4,7 @@
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
   <arg name="host_ip" default="255.255.255.255"/>
   <arg name="use_concat_filter" default="true"/>
-  <arg name="vehicle_mirror_param_file" default="$(find-pkg-share ioniq_vehicle_launch)/ioniq_vehicle_description/config/mirror.param.yaml" />
+  <arg name="vehicle_mirror_param_file" default="$(find-pkg-share ioniq_electric_vehicle_launch)/ioniq_electric_vehicle_description/config/mirror.param.yaml" />
 
   <group>
     <push-ros-namespace namespace="lidar"/>
@@ -16,16 +16,16 @@
           <arg name="lidar_frame"    value="velodyne_top"/>
         </include>
 
-        <include file="$(find-pkg-share common_ioniq_sensor_launch)/launch/ouster_128.launch.xml">
+        <include file="$(find-pkg-share common_ioniq_electric_sensor_launch)/launch/ouster_128.launch.xml">
           <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
           <arg name="container_name" value="$(var pointcloud_container_name)"/>
         </include>
       </group> -->
       
         <push-ros-namespace namespace="top"/>
-        <include file="$(find-pkg-share common_ioniq_sensor_launch)/launch/velodyne_VLP16_vd.launch.xml">
+        <include file="$(find-pkg-share common_ioniq_electric_sensor_launch)/launch/velodyne_VLP16_vd.launch.xml">
           <arg name="velodyne_driver_node_param_file" value="top_lidar.yaml"/>
-          <arg name="velodyne_pointcloud_node_param_path" value="$(find-pkg-share ioniq_sensor_kit_launch)/config/VLP16-velodyne_transform_node-params_top.yaml"/>
+          <arg name="velodyne_pointcloud_node_param_path" value="$(find-pkg-share ioniq_electric_sensor_kit_launch)/config/VLP16-velodyne_transform_node-params_top.yaml"/>
           <arg name="sensor_frame" value="velodyne_top"/>
           <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
           <arg name="container_name" value="$(var pointcloud_container_name)"/>
@@ -34,16 +34,16 @@
 
       <!-- <group>
         <push-ros-namespace namespace="front"/>
-        <include file="$(find-pkg-share common_ioniq_sensor_launch)/launch/velodyne_VLP16_vd.launch.xml">
+        <include file="$(find-pkg-share common_ioniq_electric_sensor_launch)/launch/velodyne_VLP16_vd.launch.xml">
           <arg name="velodyne_driver_node_param_file" value="front_lidar.yaml"/>
-          <arg name="velodyne_pointcloud_node_param_path" value="$(find-pkg-share ioniq_sensor_kit_launch)/config/VLP16-velodyne_transform_node-params_front.yaml"/>
+          <arg name="velodyne_pointcloud_node_param_path" value="$(find-pkg-share ioniq_electric_sensor_kit_launch)/config/VLP16-velodyne_transform_node-params_front.yaml"/>
           <arg name="sensor_frame" value="velodyne_front"/>
           <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
           <arg name="container_name" value="$(var pointcloud_container_name)"/>
         </include>
       </group> -->
 
-    <include file="$(find-pkg-share ioniq_sensor_kit_launch)/launch/pointcloud_preprocessor.launch.py">
+    <include file="$(find-pkg-share ioniq_electric_sensor_kit_launch)/launch/pointcloud_preprocessor.launch.py">
       <arg name="base_frame" value="base_link"/>
       <arg name="use_intra_process" value="true"/>
       <arg name="use_multithread" value="false"/>

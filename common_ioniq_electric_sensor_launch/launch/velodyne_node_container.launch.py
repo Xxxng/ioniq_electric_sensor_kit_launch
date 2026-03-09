@@ -60,16 +60,16 @@ def launch_setup(context, *args, **kwargs):
             result[x] = LaunchConfiguration(x)
         return result
     
-    ioniq_sensor_kit_share_dir = get_package_share_directory("ioniq_sensor_kit_launch")
+    ioniq_electric_sensor_kit_share_dir = get_package_share_directory("ioniq_electric_sensor_kit_launch")
     velodyne_driver_node_param_filename = LaunchConfiguration("velodyne_driver_node_param_file").perform(context)
-    driver_params_file = os.path.join(ioniq_sensor_kit_share_dir, 'config', velodyne_driver_node_param_filename)
+    driver_params_file = os.path.join(ioniq_electric_sensor_kit_share_dir, 'config', velodyne_driver_node_param_filename)
     with open(driver_params_file, 'r') as f:
         velodyne_driver_node_param = yaml.safe_load(f)['velodyne_driver_node']['ros__parameters']
 
-    velodyne_convert_params_file = os.path.join(ioniq_sensor_kit_share_dir, 'config', 'VLP16-velodyne_transform_node-params_top.yaml')
+    velodyne_convert_params_file = os.path.join(ioniq_electric_sensor_kit_share_dir, 'config', 'VLP16-velodyne_transform_node-params_top.yaml')
     with open(velodyne_convert_params_file, 'r') as f:
         velodyne_convert_params = yaml.safe_load(f)['velodyne_transform_node']['ros__parameters']
-    velodyne_convert_params['calibration'] = os.path.join(ioniq_sensor_kit_share_dir, 'config', 'VLP16db.yaml')
+    velodyne_convert_params['calibration'] = os.path.join(ioniq_electric_sensor_kit_share_dir, 'config', 'VLP16db.yaml')
 
     #Pointcloud preprocessor parameters
     distortion_corrector_node_param = ParameterFile(
@@ -228,7 +228,7 @@ def generate_launch_description():
             DeclareLaunchArgument(name, default_value=default_value, description=description)
         )
 
-    common_ioniq_sensor_share_dir = get_package_share_directory("common_ioniq_sensor_launch")
+    common_ioniq_electric_sensor_share_dir = get_package_share_directory("common_ioniq_electric_sensor_launch")
 
     add_launch_arg("velodyne_driver_node_param_file", "top_lidar.yaml", description="Path to Velodyne parameter YAML")
     add_launch_arg("velodyne_pointcloud_node_param_path", description="Path to Velodyne parameter YAML")
@@ -244,7 +244,7 @@ def generate_launch_description():
     add_launch_arg(
         "distortion_correction_node_param_path",
         os.path.join(
-            common_ioniq_sensor_share_dir,
+            common_ioniq_electric_sensor_share_dir,
             "config",
             "distortion_corrector_node.param.yaml",
         ),
@@ -253,7 +253,7 @@ def generate_launch_description():
     add_launch_arg(
         "ring_outlier_filter_node_param_path",
         os.path.join(
-            common_ioniq_sensor_share_dir,
+            common_ioniq_electric_sensor_share_dir,
             "config",
             "ring_outlier_filter_node.param.yaml",
         ),

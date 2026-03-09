@@ -12,7 +12,7 @@ def generate_launch_description():
     node_name = LaunchConfiguration('node_name')
     params_file = LaunchConfiguration('params_file')
     
-    kit_dir = get_package_share_directory('ioniq_sensor_kit_launch')
+    kit_dir = get_package_share_directory('ioniq_electric_sensor_kit_launch')
     default_params_path = os.path.join(kit_dir, 'config', 'camera0.yaml')
 
     return LaunchDescription([

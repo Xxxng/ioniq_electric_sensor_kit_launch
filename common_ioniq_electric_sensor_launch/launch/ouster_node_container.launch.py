@@ -60,7 +60,7 @@ def launch_setup(context, *args, **kwargs):
             result[x] = LaunchConfiguration(x)
         return result
     
-    ioniq_sensor_kit_share_dir = get_package_share_directory("ioniq_sensor_kit_launch")
+    ioniq_electric_sensor_kit_share_dir = get_package_share_directory("ioniq_electric_sensor_kit_launch")
     
     #Pointcloud preprocessor parameters
     distortion_corrector_node_param = ParameterFile(
@@ -196,7 +196,7 @@ def generate_launch_description():
             DeclareLaunchArgument(name, default_value=default_value, description=description)
         )
 
-    common_ioniq_sensor_share_dir = get_package_share_directory("common_ioniq_sensor_launch")
+    common_ioniq_electric_sensor_share_dir = get_package_share_directory("common_ioniq_electric_sensor_launch")
 
     add_launch_arg("vehicle_mirror_param_file", description="Path to vehicle mirror YAML")
     add_launch_arg("base_frame", "base_link", "Base frame ID")
@@ -209,7 +209,7 @@ def generate_launch_description():
     add_launch_arg(
         "distortion_correction_node_param_path",
         os.path.join(
-            common_ioniq_sensor_share_dir,
+            common_ioniq_electric_sensor_share_dir,
             "config",
             "distortion_corrector_node.param.yaml",
         ),
@@ -218,7 +218,7 @@ def generate_launch_description():
     add_launch_arg(
         "ring_outlier_filter_node_param_path",
         os.path.join(
-            common_ioniq_sensor_share_dir,
+            common_ioniq_electric_sensor_share_dir,
             "config",
             "ring_outlier_filter_node.param.yaml",
         ),
