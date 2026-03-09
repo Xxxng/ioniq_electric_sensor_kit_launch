@@ -1,0 +1,13 @@
+/**:
+  ros__parameters:
+    target_x: 0.0  # 회전의 타겟 벡터 X 값
+    target_y: 1.0  # 회전의 타겟 벡터 Y 값 (180도 회전의 경우 이 값은 1로 설정)
+    target_z: 0.0  # 회전의 타겟 벡터 Z 값
+    source_x: 0.0  # 회전의 소스 벡터 X 값
+    source_y: -1.0  # 회전의 소스 벡터 Y 값 (소스 벡터도 타겟 벡터에 맞춰 설정)
+    source_z: 0.0  # 회전의 소스 벡터 Z 값
+    output_frame_id: "camera0/camera_link"  # 출력 프레임 ID (빈 문자열일 경우 기본값 사용)
+    input_frame_id: ""  # 입력 프레임 ID (빈 문자열일 경우 기본값 사용)
+    use_camera_info: true  # 카메라 정보 사용 여부
+    max_angular_rate: 10.0  # 최대 회전 속도 (rad/s)
+    output_image_size: 2.0 # 출력 이미지 크기 (기본값: 2.0)
